@@ -22,14 +22,27 @@ class WeatherViewController: UIViewController {
         
     }
     
-    let cities = ["Seoul", "Tokyo", "LA", "Seattle"]
-    let weathers = ["cloud.fill", "sun.max.fill", "wind", "cloud.sun.rain.fill"]
+
     
     
     @IBAction func changeButtonTapped(_ sender: Any) {
             
-            print("도시, 온도, 날씨 이미지 변경 !")
+        reload()
+        
+
         }
+
+    func reload(){
+        let cities = ["Seoul", "Tokyo", "LA", "Seattle"]
+        let weathers = ["cloud.fill", "sun.max.fill", "wind", "cloud.sun.rain.fill"]
+        cityLabel.text = cities.randomElement()!
+        let imageName = weathers.randomElement()!
+        
+        weatherImageView.image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysOriginal)
+        
+        let randomTemp = Int.random(in: 10..<30)
+        temperatureLabel.text="\(randomTemp)°"
+    }
         
 
     /*
